@@ -1,0 +1,10 @@
+# First, the Options -Indexes line disables directory listing
+Options -Indexes
+
+# URL Rewrite
+# The next few lines will translate RESTFUL API-like URIs into the language of our index.php using regex. So, for example posts/edit/3 will be translated into index.php?controller=posts&action=edit&id=3
+RewriteEngine on
+RewriteRule ^(modules/|common/|config/|helpers/|services/) - [F,L,NC]
+RewriteRule ^([^/.]+)/?$ index.php?controller=$1&action=index
+RewriteRule ^([^/.]+)/([^/.]+)/?$ index.php?controller=$1&action=$2
+RewriteRule ^([^/.]+)/([^/.]+)/([^/.]+)/?$ index.php?controller=$1&action=$2&parameter=$3
